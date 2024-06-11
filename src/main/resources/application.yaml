@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: pokedex-notification
+
+azure:
+  connection-string: ${AZURE_CONNECTION_STRING}
+  hub-path: pokedex
+  fcm:
+    tokens:
+      - "d3BaYedCS2OtKJwuM4hvkL:APA91bGvIobvEe5TpPY1MuApyrmhjoXlo_YUeR4pnOZAoBn61e8Uj6QVMXwZSEpneGdNBgx8CtxFASreDgtbDHLQpFwrghMeMePzVhpfXG13mFR6bNfTQsW2pwKmrZOhs5Y7u_m5P0uq"
+
+apns:
+  device: "A89E7BC69A68BB3FCEF621C9D86D81C819BFAAFE1C88B5833368BDDEAF6379F8"
+  topic: "com.sfeir.lux.pokedex"
+  teamId: ${APNS_TEAM_ID}
+  keyId: ${APNS_KEY_ID}
+
+fcm:
+  tokens:
+    - "eV1p5vzNaUJ_vPWanVSJRt:APA91bHzd6ZLvCwne4Or2SbuVpWPWxD5Sjl_iOXR0AuLYKdRjRx9btHVogm9emk1I6N34fyoKEq-LU1TYE7uwQzOH8a6CHYCV4MFLokJIO36h7yT3mdr2xEH5CSMhlOfdZGWVUFXXvYZ"
+    - "d3BaYedCS2OtKJwuM4hvkL:APA91bGvIobvEe5TpPY1MuApyrmhjoXlo_YUeR4pnOZAoBn61e8Uj6QVMXwZSEpneGdNBgx8CtxFASreDgtbDHLQpFwrghMeMePzVhpfXG13mFR6bNfTQsW2pwKmrZOhs5Y7u_m5P0uq"
