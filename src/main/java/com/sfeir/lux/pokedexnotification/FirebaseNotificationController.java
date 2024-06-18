@@ -95,7 +95,7 @@ public class FirebaseNotificationController {
     @GetMapping("/notify/wild-pokemon")
     public ResponseEntity<String> sendNotificationToPokemonTopic(@RequestParam(required = false) String pokemon) throws FirebaseMessagingException {
         var builder = Message.builder()
-                .setApnsConfig(ApnsConfig.builder().setAps(Aps.builder().setBadge(1).build()).build())
+                .setApnsConfig(ApnsConfig.builder().setAps(Aps.builder().setContentAvailable(true).setBadge(1).build()).build())
                 .setNotification(
                         Notification.builder()
                                 .setTitle("A wild pokemon appears !")
@@ -106,6 +106,20 @@ public class FirebaseNotificationController {
 
         if (pokemon != null) builder.putData("pokemon", pokemon);
         else builder.putData("pokemon", String.valueOf(new Random().nextInt(1025) + 1));
+        Message message = builder.build();
+        var response = FirebaseMessaging.getInstance().send(message);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/reset")
+    public ResponseEntity<String> resetBadge(@RequestParam(required = false) String badge) throws FirebaseMessagingException {
+        var builder = Message.builder()
+                .setApnsConfig(ApnsConfig.builder().setAps(Aps.builder().setContentAvailable(true).build()).build())
+                .setNotification(Notification.builder().build())
+                .putData("badge", badge != null ? badge : "0")
+                .setTopic("pokemon");
+
+
         Message message = builder.build();
         var response = FirebaseMessaging.getInstance().send(message);
         return ResponseEntity.ok(response);
