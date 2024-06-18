@@ -111,12 +111,25 @@ public class FirebaseNotificationController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/reset")
-    public ResponseEntity<String> resetBadge(@RequestParam(required = false) String badge) throws FirebaseMessagingException {
+    @GetMapping("/reset/badge")
+    public ResponseEntity<String> resetBadge() throws FirebaseMessagingException {
+        var builder = Message.builder()
+                .setApnsConfig(ApnsConfig.builder().setAps(Aps.builder().setContentAvailable(true).setBadge(0).build()).build())
+                .setNotification(Notification.builder().build())
+                .setTopic("pokemon");
+
+
+        Message message = builder.build();
+        var response = FirebaseMessaging.getInstance().send(message);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/badge")
+    public ResponseEntity<String> setBadge(@RequestParam String number) throws FirebaseMessagingException {
         var builder = Message.builder()
                 .setApnsConfig(ApnsConfig.builder().setAps(Aps.builder().setContentAvailable(true).build()).build())
                 .setNotification(Notification.builder().build())
-                .putData("badge", badge != null ? badge : "0")
+                .putData("badge", number)
                 .setTopic("pokemon");
 
 
