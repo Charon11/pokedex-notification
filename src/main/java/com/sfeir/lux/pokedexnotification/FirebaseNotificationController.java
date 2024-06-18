@@ -34,6 +34,7 @@ public class FirebaseNotificationController {
 
         FirebaseApp.initializeApp(options);
         this.fcmTokens = fcmTokens;
+        FirebaseMessaging.getInstance().subscribeToTopicAsync(fcmTokens, "pokemon");
     }
 
     @GetMapping("/notify")
@@ -62,8 +63,8 @@ public class FirebaseNotificationController {
 
         var builder = MulticastMessage.builder()
                 .setNotification(
-                        Notification.builder().
-                                setTitle("A wild pokemon appears !")
+                        Notification.builder()
+                                .setTitle("A wild pokemon appears !")
                                 .setBody("Click to see who it is")
                                 .build()
                 )
