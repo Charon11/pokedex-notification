@@ -80,7 +80,7 @@ public class AzureNotificationController {
         if (pokemon != null)
             data.addProperty("pokemon", pokemon);
         else
-            data.addProperty("pokemon", new Random().nextInt(1025) + 1);
+            data.addProperty("pokemon", String.valueOf(new Random().nextInt(1025) + 1));
         notification.addProperty("title", "A wild Pokemon Appear !");
         notification.addProperty("body", "Click to see who it is");
         message.add("notification", notification);
@@ -96,7 +96,7 @@ public class AzureNotificationController {
         if (pokemon != null)
             send.addProperty("pokemon", pokemon);
         else
-            send.addProperty("pokemon", new Random().nextInt(1025) + 1);
+            send.addProperty("pokemon", String.valueOf(new Random().nextInt(1025) + 1));
         alert.addProperty("title", "A wild Pokemon Appear !");
         alert.addProperty("body", "Click to see who it is");
         aps.addProperty("badge", 1);
