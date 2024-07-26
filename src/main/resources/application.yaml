@@ -5,9 +5,13 @@ spring:
 azure:
   connection-string: ${AZURE_CONNECTION_STRING}
   hub-path: pokedex
+  apns:
+    template: "{\"pokemon\":\"$(pokemon)\",\"aps\":{\"badge\":\"#(badge)\",\"alert\": {\"title\":\"$(title)\",\"body\":\"$(body)\"}}}"
   fcm:
+    template: "{\"message\":{\"notification\":{\"title\":\"$(title)\",\"body\":\"$(body)\"},\"data\":{\"pokemon\":\"$(pokemon)\"}}}"
     tokens:
       - "d3BaYedCS2OtKJwuM4hvkL:APA91bGvIobvEe5TpPY1MuApyrmhjoXlo_YUeR4pnOZAoBn61e8Uj6QVMXwZSEpneGdNBgx8CtxFASreDgtbDHLQpFwrghMeMePzVhpfXG13mFR6bNfTQsW2pwKmrZOhs5Y7u_m5P0uq"
+      - "f54B3AMzQTGXAwqd-Ooutd:APA91bEQcXEJeYk1ujCI657oRVWBv_4MvNzFQWQ5yXL-Liw5TA6J0AT6u-VkuJhM_XLhVnJ_q30aSFPzoPQDLGxvuqMXNIVGan4N5nCdcPfgV7dR3N_Z_gjhcTGlSahMgdhFMq537ogz"
 
 apns:
   device: "68e1f25a1cd05c2bdb43c08d66af3c2e3ee0ecdeea7780dabe41da11ff0d35d2"

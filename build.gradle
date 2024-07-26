@@ -8,7 +8,7 @@ group = 'com.sfeir.lux'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+	sourceCompatibility = '21'
 }
 
 repositories {
@@ -20,6 +20,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'io.projectreactor.netty:reactor-netty-http'
 	implementation 'com.google.firebase:firebase-admin:9.3.0'
+	compileOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation group: 'com.windowsazure', name: 'Notification-Hubs-java-sdk', version: '1.1.0' exclude group: 'commons-logging', module: 'commons-logging' exclude group: 'org.slf4j'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.5'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.12.5'
